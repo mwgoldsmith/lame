@@ -164,6 +164,8 @@
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;HAVE_MPGLIB;WIN32;HAVE_CONFIG_H;HAVE_XMMINTRIN_H;MIN_ARCH_SSE;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATED;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>.\;..\include;..\libmp3lame;..\mpglib</AdditionalIncludeDirectories>
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <ExceptionHandling>false</ExceptionHandling>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -189,6 +191,8 @@ copy ..\LICENSE $(OutputPath)\licenses\lame.txt</Command>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;HAVE_MPGLIB;WIN32;HAVE_CONFIG_H;HAVE_XMMINTRIN_H;MIN_ARCH_SSE;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATED;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>.\;..\include;..\libmp3lame;..\mpglib</AdditionalIncludeDirectories>
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <ExceptionHandling>false</ExceptionHandling>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -215,6 +219,8 @@ copy ..\LICENSE $(OutputPath)\licenses\lame.txt</Command>
       <AdditionalIncludeDirectories>.\;..\include;..\libmp3lame;..\mpglib</AdditionalIncludeDirectories>
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
       <BufferSecurityCheck>true</BufferSecurityCheck>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <ExceptionHandling>false</ExceptionHandling>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -241,6 +247,8 @@ copy ..\LICENSE $(OutputPath)\licenses\lame.txt</Command>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;HAVE_MPGLIB;WIN32;HAVE_CONFIG_H;HAVE_XMMINTRIN_H;MIN_ARCH_SSE;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATED;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>.\;..\include;..\libmp3lame;..\mpglib</AdditionalIncludeDirectories>
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <ExceptionHandling>false</ExceptionHandling>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -278,6 +286,7 @@ copy ..\LICENSE $(OutputPath)\licenses\lame.txt</Command>
       <FloatingPointExceptions>false</FloatingPointExceptions>
       <PreprocessorDefinitions>NDEBUG;_WINDOWS;HAVE_MPGLIB;WIN32;HAVE_CONFIG_H;HAVE_XMMINTRIN_H;MIN_ARCH_SSE;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATED;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>.\;..\include;..\libmp3lame;..\mpglib</AdditionalIncludeDirectories>
+      <ExceptionHandling>false</ExceptionHandling>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -316,6 +325,7 @@ copy ..\LICENSE $(OutputPath)\licenses\lame.txt</Command>
       <FloatingPointExceptions>false</FloatingPointExceptions>
       <PreprocessorDefinitions>NDEBUG;_WINDOWS;HAVE_MPGLIB;WIN32;HAVE_CONFIG_H;HAVE_XMMINTRIN_H;MIN_ARCH_SSE;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATED;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>.\;..\include;..\libmp3lame;..\mpglib</AdditionalIncludeDirectories>
+      <ExceptionHandling>false</ExceptionHandling>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -354,6 +364,7 @@ copy ..\LICENSE $(OutputPath)\licenses\lame.txt</Command>
       <FloatingPointExceptions>false</FloatingPointExceptions>
       <PreprocessorDefinitions>NDEBUG;_WINDOWS;HAVE_MPGLIB;WIN32;HAVE_CONFIG_H;HAVE_XMMINTRIN_H;MIN_ARCH_SSE;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATED;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>.\;..\include;..\libmp3lame;..\mpglib</AdditionalIncludeDirectories>
+      <ExceptionHandling>false</ExceptionHandling>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -393,6 +404,7 @@ copy ..\LICENSE $(OutputPath)\licenses\lame.txt</Command>
       <FloatingPointExceptions>false</FloatingPointExceptions>
       <PreprocessorDefinitions>NDEBUG;_WINDOWS;HAVE_MPGLIB;WIN32;HAVE_CONFIG_H;HAVE_XMMINTRIN_H;MIN_ARCH_SSE;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATED;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>.\;..\include;..\libmp3lame;..\mpglib</AdditionalIncludeDirectories>
+      <ExceptionHandling>false</ExceptionHandling>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
