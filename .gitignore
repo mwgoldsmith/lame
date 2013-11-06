@@ -154,3 +154,23 @@ $RECYCLE.BIN/
 
 # Mac desktop service store files
 .DS_Store
+
+
+*.o
+*.a
+*.lo
+*.la
+.deps
+.libs
+Makefile
+Makefile.in
+config.h
+config.status
+stamp*
+libtool
+POTFILES
+lame.spec
+
+#Ensure files required by SMC msvc builds are included
+!SMC/*.h
+!SMC/*.def
