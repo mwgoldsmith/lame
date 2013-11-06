@@ -177,10 +177,16 @@
     </Lib>
     <PostBuildEvent>
       <Command>mkdir $(OutputPath)\include
-copy ..\include\lame.h $(OutputPath)\include
+mkdir $(OutputPath)\include\lame
+copy ..\include\lame.h $(OutputPath)\include\lame
 mkdir $(OutputPath)\licenses
-copy ..\LICENSE $(OutputPath)\licenses\lame.txt</Command>
+copy ..\LICENSE $(OutputPath)\licenses\mp3lame.txt</Command>
     </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>if exist ..\config.h (
+del ..\config.h
+)</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -204,10 +210,16 @@ copy ..\LICENSE $(OutputPath)\licenses\lame.txt</Command>
     </Lib>
     <PostBuildEvent>
       <Command>mkdir $(OutputPath)\include
-copy ..\include\lame.h $(OutputPath)\include
+mkdir $(OutputPath)\include\lame
+copy ..\include\lame.h $(OutputPath)\include\lame
 mkdir $(OutputPath)\licenses
-copy ..\LICENSE $(OutputPath)\licenses\lame.txt</Command>
+copy ..\LICENSE $(OutputPath)\licenses\mp3lame.txt</Command>
     </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>if exist ..\config.h (
+del ..\config.h
+)</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">
     <ClCompile>
@@ -233,10 +245,16 @@ copy ..\LICENSE $(OutputPath)\licenses\lame.txt</Command>
     </Link>
     <PostBuildEvent>
       <Command>mkdir $(OutputPath)\include
-copy ..\include\lame.h $(OutputPath)\include
+mkdir $(OutputPath)\include\lame
+copy ..\include\lame.h $(OutputPath)\include\lame
 mkdir $(OutputPath)\licenses
-copy ..\LICENSE $(OutputPath)\licenses\lame.txt</Command>
+copy ..\LICENSE $(OutputPath)\licenses\mp3lame.txt</Command>
     </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>if exist ..\config.h (
+del ..\config.h
+)</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">
     <ClCompile>
@@ -261,10 +279,16 @@ copy ..\LICENSE $(OutputPath)\licenses\lame.txt</Command>
     </Link>
     <PostBuildEvent>
       <Command>mkdir $(OutputPath)\include
-copy ..\include\lame.h $(OutputPath)\include
+mkdir $(OutputPath)\include\lame
+copy ..\include\lame.h $(OutputPath)\include\lame
 mkdir $(OutputPath)\licenses
-copy ..\LICENSE $(OutputPath)\licenses\lame.txt</Command>
+copy ..\LICENSE $(OutputPath)\licenses\mp3lame.txt</Command>
     </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>if exist ..\config.h (
+del ..\config.h
+)</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -300,10 +324,16 @@ copy ..\LICENSE $(OutputPath)\licenses\lame.txt</Command>
     </Lib>
     <PostBuildEvent>
       <Command>mkdir $(OutputPath)\include
-copy ..\include\lame.h $(OutputPath)\include
+mkdir $(OutputPath)\include\lame
+copy ..\include\lame.h $(OutputPath)\include\lame
 mkdir $(OutputPath)\licenses
-copy ..\LICENSE $(OutputPath)\licenses\lame.txt</Command>
+copy ..\LICENSE $(OutputPath)\licenses\mp3lame.txt</Command>
     </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>if exist ..\config.h (
+del ..\config.h
+)</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -339,10 +369,16 @@ copy ..\LICENSE $(OutputPath)\licenses\lame.txt</Command>
     </Lib>
     <PostBuildEvent>
       <Command>mkdir $(OutputPath)\include
-copy ..\include\lame.h $(OutputPath)\include
+mkdir $(OutputPath)\include\lame
+copy ..\include\lame.h $(OutputPath)\include\lame
 mkdir $(OutputPath)\licenses
-copy ..\LICENSE $(OutputPath)\licenses\lame.txt</Command>
+copy ..\LICENSE $(OutputPath)\licenses\mp3lame.txt</Command>
     </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>if exist ..\config.h (
+del ..\config.h
+)</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">
     <ClCompile>
@@ -379,10 +415,16 @@ copy ..\LICENSE $(OutputPath)\licenses\lame.txt</Command>
     </Link>
     <PostBuildEvent>
       <Command>mkdir $(OutputPath)\include
-copy ..\include\lame.h $(OutputPath)\include
+mkdir $(OutputPath)\include\lame
+copy ..\include\lame.h $(OutputPath)\include\lame
 mkdir $(OutputPath)\licenses
-copy ..\LICENSE $(OutputPath)\licenses\lame.txt</Command>
+copy ..\LICENSE $(OutputPath)\licenses\mp3lame.txt</Command>
     </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>if exist ..\config.h (
+del ..\config.h
+)</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">
     <ClCompile>
@@ -419,10 +461,16 @@ copy ..\LICENSE $(OutputPath)\licenses\lame.txt</Command>
     </Link>
     <PostBuildEvent>
       <Command>mkdir $(OutputPath)\include
-copy ..\include\lame.h $(OutputPath)\include
+mkdir $(OutputPath)\include\lame
+copy ..\include\lame.h $(OutputPath)\include\lame
 mkdir $(OutputPath)\licenses
-copy ..\LICENSE $(OutputPath)\licenses\lame.txt</Command>
+copy ..\LICENSE $(OutputPath)\licenses\mp3lame.txt</Command>
     </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>if exist ..\config.h (
+del ..\config.h
+)</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\libmp3lame\bitstream.c" />
