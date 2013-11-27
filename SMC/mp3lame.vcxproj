@@ -163,16 +163,16 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <OutputFile>$(OutDir)\lib\$(TargetName)$(TargetExt)</OutputFile>
+      <OutputFile>$(OutDir)\lib\msvc32\$(TargetName)$(TargetExt)</OutputFile>
       <TargetMachine>MachineX86</TargetMachine>
       <SubSystem>Windows</SubSystem>
     </Lib>
     <PostBuildEvent>
-      <Command>mkdir $(OutputPath)\include
-mkdir $(OutputPath)\include\lame
-copy ..\include\lame.h $(OutputPath)\include\lame
-mkdir $(OutputPath)\licenses
-copy ..\LICENSE $(OutputPath)\licenses\mp3lame.txt</Command>
+      <Command>mkdir $(OutDir)\include\msvc
+mkdir $(OutDir)\include\msvc\lame
+copy ..\include\lame.h $(OutDir)\include\msvc\lame
+mkdir $(OutDir)\licenses
+copy ..\LICENSE $(OutDir)\licenses\mp3lame.txt</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>if exist ..\config.h (
@@ -196,16 +196,16 @@ del ..\config.h
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <OutputFile>$(OutDir)\lib\x64\$(TargetName)$(TargetExt)</OutputFile>
+      <OutputFile>$(OutDir)\lib\msvc64\$(TargetName)$(TargetExt)</OutputFile>
       <TargetMachine>MachineX64</TargetMachine>
       <SubSystem>Windows</SubSystem>
     </Lib>
     <PostBuildEvent>
-      <Command>mkdir $(OutputPath)\include
-mkdir $(OutputPath)\include\lame
-copy ..\include\lame.h $(OutputPath)\include\lame
-mkdir $(OutputPath)\licenses
-copy ..\LICENSE $(OutputPath)\licenses\mp3lame.txt</Command>
+      <Command>mkdir $(OutDir)\include\msvc
+mkdir $(OutDir)\include\msvc\lame
+copy ..\include\lame.h $(OutDir)\include\msvc\lame
+mkdir $(OutDir)\licenses
+copy ..\LICENSE $(OutDir)\licenses\mp3lame.txt</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>if exist ..\config.h (
@@ -228,19 +228,19 @@ del ..\config.h
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <OutputFile>$(OutDir)\bin\$(TargetName)$(TargetExt)</OutputFile>
-      <ProgramDatabaseFile>$(OutDir)\bin\$(TargetName).pdb</ProgramDatabaseFile>
+      <OutputFile>$(OutDir)\bin\msvc32\$(TargetName)$(TargetExt)</OutputFile>
+      <ProgramDatabaseFile>$(OutDir)\bin\msvc32\$(TargetName).pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
-      <ImportLibrary>$(OutDir)\lib\$(TargetName).lib</ImportLibrary>
-      <ProfileGuidedDatabase>$(OutDir)\bin\$(TargetName).pgd</ProfileGuidedDatabase>
+      <ImportLibrary>$(OutDir)\lib\msvc32\$(TargetName).lib</ImportLibrary>
+      <ProfileGuidedDatabase>$(OutDir)\bin\msvc32\$(TargetName).pgd</ProfileGuidedDatabase>
       <ModuleDefinitionFile>..\include\lame.def</ModuleDefinitionFile>
     </Link>
     <PostBuildEvent>
-      <Command>mkdir $(OutputPath)\include
-mkdir $(OutputPath)\include\lame
-copy ..\include\lame.h $(OutputPath)\include\lame
-mkdir $(OutputPath)\licenses
-copy ..\LICENSE $(OutputPath)\licenses\mp3lame.txt</Command>
+      <Command>mkdir $(OutDir)\include\msvc
+mkdir $(OutDir)\include\msvc\lame
+copy ..\include\lame.h $(OutDir)\include\msvc\lame
+mkdir $(OutDir)\licenses
+copy ..\LICENSE $(OutDir)\licenses\mp3lame.txt</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>if exist ..\config.h (
@@ -262,19 +262,19 @@ del ..\config.h
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <OutputFile>$(OutDir)\bin\x64\$(TargetName)$(TargetExt)</OutputFile>
-      <ProgramDatabaseFile>$(OutDir)\bin\x64\$(TargetName).pdb</ProgramDatabaseFile>
+      <OutputFile>$(OutDir)\bin\msvc64\$(TargetName)$(TargetExt)</OutputFile>
+      <ProgramDatabaseFile>$(OutDir)\bin\msvc64\$(TargetName).pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
-      <ImportLibrary>$(OutDir)\lib\x64\$(TargetName).lib</ImportLibrary>
-      <ProfileGuidedDatabase>$(OutDir)\bin\x64\$(TargetName).pgd</ProfileGuidedDatabase>
+      <ImportLibrary>$(OutDir)\lib\msvc64\$(TargetName).lib</ImportLibrary>
+      <ProfileGuidedDatabase>$(OutDir)\bin\msvc64\$(TargetName).pgd</ProfileGuidedDatabase>
       <ModuleDefinitionFile>..\include\lame.def</ModuleDefinitionFile>
     </Link>
     <PostBuildEvent>
-      <Command>mkdir $(OutputPath)\include
-mkdir $(OutputPath)\include\lame
-copy ..\include\lame.h $(OutputPath)\include\lame
-mkdir $(OutputPath)\licenses
-copy ..\LICENSE $(OutputPath)\licenses\mp3lame.txt</Command>
+      <Command>mkdir $(OutDir)\include\msvc
+mkdir $(OutDir)\include\msvc\lame
+copy ..\include\lame.h $(OutDir)\include\msvc\lame
+mkdir $(OutDir)\licenses
+copy ..\LICENSE $(OutDir)\licenses\mp3lame.txt</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>if exist ..\config.h (
@@ -310,16 +310,16 @@ del ..\config.h
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <Lib>
-      <OutputFile>$(OutDir)\lib\$(TargetName)$(TargetExt)</OutputFile>
+      <OutputFile>$(OutDir)\lib\msvc32\$(TargetName)$(TargetExt)</OutputFile>
       <TargetMachine>MachineX86</TargetMachine>
       <SubSystem>Windows</SubSystem>
     </Lib>
     <PostBuildEvent>
-      <Command>mkdir $(OutputPath)\include
-mkdir $(OutputPath)\include\lame
-copy ..\include\lame.h $(OutputPath)\include\lame
-mkdir $(OutputPath)\licenses
-copy ..\LICENSE $(OutputPath)\licenses\mp3lame.txt</Command>
+      <Command>mkdir $(OutDir)\include\msvc
+mkdir $(OutDir)\include\msvc\lame
+copy ..\include\lame.h $(OutDir)\include\msvc\lame
+mkdir $(OutDir)\licenses
+copy ..\LICENSE $(OutDir)\licenses\mp3lame.txt</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>if exist ..\config.h (
@@ -355,16 +355,16 @@ del ..\config.h
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <Lib>
-      <OutputFile>$(OutDir)\lib\x64\$(TargetName)$(TargetExt)</OutputFile>
+      <OutputFile>$(OutDir)\lib\msvc64\$(TargetName)$(TargetExt)</OutputFile>
       <TargetMachine>MachineX64</TargetMachine>
       <SubSystem>Windows</SubSystem>
     </Lib>
     <PostBuildEvent>
-      <Command>mkdir $(OutputPath)\include
-mkdir $(OutputPath)\include\lame
-copy ..\include\lame.h $(OutputPath)\include\lame
-mkdir $(OutputPath)\licenses
-copy ..\LICENSE $(OutputPath)\licenses\mp3lame.txt</Command>
+      <Command>mkdir $(OutDir)\include\msvc
+mkdir $(OutDir)\include\msvc\lame
+copy ..\include\lame.h $(OutDir)\include\msvc\lame
+mkdir $(OutDir)\licenses
+copy ..\LICENSE $(OutDir)\licenses\mp3lame.txt</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>if exist ..\config.h (
@@ -398,19 +398,19 @@ del ..\config.h
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <OutputFile>$(OutDir)\bin\$(TargetName)$(TargetExt)</OutputFile>
-      <ProgramDatabaseFile>$(OutDir)\bin\$(TargetName).pdb</ProgramDatabaseFile>
+      <OutputFile>$(OutDir)\bin\msvc32\$(TargetName)$(TargetExt)</OutputFile>
+      <ProgramDatabaseFile>$(OutDir)\bin\msvc32\$(TargetName).pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
-      <ImportLibrary>$(OutDir)\lib\$(TargetName).lib</ImportLibrary>
-      <ProfileGuidedDatabase>$(OutDir)\bin\$(TargetName).pgd</ProfileGuidedDatabase>
+      <ImportLibrary>$(OutDir)\lib\msvc32\$(TargetName).lib</ImportLibrary>
+      <ProfileGuidedDatabase>$(OutDir)\bin\msvc32\$(TargetName).pgd</ProfileGuidedDatabase>
       <ModuleDefinitionFile>..\include\lame.def</ModuleDefinitionFile>
     </Link>
     <PostBuildEvent>
-      <Command>mkdir $(OutputPath)\include
-mkdir $(OutputPath)\include\lame
-copy ..\include\lame.h $(OutputPath)\include\lame
-mkdir $(OutputPath)\licenses
-copy ..\LICENSE $(OutputPath)\licenses\mp3lame.txt</Command>
+      <Command>mkdir $(OutDir)\include\msvc
+mkdir $(OutDir)\include\msvc\lame
+copy ..\include\lame.h $(OutDir)\include\msvc\lame
+mkdir $(OutDir)\licenses
+copy ..\LICENSE $(OutDir)\licenses\mp3lame.txt</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>if exist ..\config.h (
@@ -444,19 +444,19 @@ del ..\config.h
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <OutputFile>$(OutDir)\bin\x64\$(TargetName)$(TargetExt)</OutputFile>
-      <ProgramDatabaseFile>$(OutDir)\bin\x64\$(TargetName).pdb</ProgramDatabaseFile>
+      <OutputFile>$(OutDir)\bin\msvc64\$(TargetName)$(TargetExt)</OutputFile>
+      <ProgramDatabaseFile>$(OutDir)\bin\msvc64\$(TargetName).pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
-      <ImportLibrary>$(OutDir)\lib\x64\$(TargetName).lib</ImportLibrary>
-      <ProfileGuidedDatabase>$(OutDir)\bin\x64\$(TargetName).pgd</ProfileGuidedDatabase>
+      <ImportLibrary>$(OutDir)\lib\msvc64\$(TargetName).lib</ImportLibrary>
+      <ProfileGuidedDatabase>$(OutDir)\bin\msvc64\$(TargetName).pgd</ProfileGuidedDatabase>
       <ModuleDefinitionFile>..\include\lame.def</ModuleDefinitionFile>
     </Link>
     <PostBuildEvent>
-      <Command>mkdir $(OutputPath)\include
-mkdir $(OutputPath)\include\lame
-copy ..\include\lame.h $(OutputPath)\include\lame
-mkdir $(OutputPath)\licenses
-copy ..\LICENSE $(OutputPath)\licenses\mp3lame.txt</Command>
+      <Command>mkdir $(OutDir)\include\msvc
+mkdir $(OutDir)\include\msvc\lame
+copy ..\include\lame.h $(OutDir)\include\msvc\lame
+mkdir $(OutDir)\licenses
+copy ..\LICENSE $(OutDir)\licenses\mp3lame.txt</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>if exist ..\config.h (
