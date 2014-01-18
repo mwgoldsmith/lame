@@ -28,6 +28,7 @@
 
 #include <assert.h>
 #include <ctype.h>
+#include <math.h>
  
 #ifdef STDC_HEADERS
 # include <stdio.h>
@@ -99,7 +100,7 @@ static int const internal_opts_enabled = INTERNAL_OPTS;
 /* GLOBAL VARIABLES.  set by parse_args() */
 /* we need to clean this up */
 
-ReaderConfig global_reader = { sf_unknown, 0, 0, 0 };
+ReaderConfig global_reader = { sf_unknown, 0, 0, 0, 0 };
 WriterConfig global_writer = { 0 };
 
 UiConfig global_ui_config = {0,0,0,0};
@@ -324,6 +325,7 @@ static int getIntValue(char const* token, char const* arg, int* ptr)
     return evaluateArgument(token, arg, _EndPtr);
 }
 
+#ifdef ID3TAGS_EXTENDED
 static int
 set_id3v2tag(lame_global_flags* gfp, int type, unsigned short const* str)
 {
@@ -340,7 +342,7 @@ set_id3v2tag(lame_global_flags* gfp, int type, unsigned short const* str)
     }
     return 0;
 }
-
+#endif
 
 static int
 set_id3tag(lame_global_flags* gfp, int type, char const* str)
@@ -449,12 +451,14 @@ print_license(FILE * const fp)
             "modify it under the terms of the GNU Library General Public\n"
             "License as published by the Free Software Foundation; either\n"
             "version 2 of the License, or (at your option) any later version.\n"
-            "\n"
+            "\n");
+    fprintf(fp,
             "This library is distributed in the hope that it will be useful,\n"
             "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
             "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU\n"
             "Library General Public License for more details.\n"
-            "\n"
+            "\n");
+    fprintf(fp,
             "You should have received a copy of the GNU Library General Public\n"
             "License along with this program. If not, see\n"
             "<http://www.gnu.org/licenses/>.\n");
@@ -512,10 +516,10 @@ short_help(const lame_global_flags * gfp, FILE * const fp, const char *ProgramNa
     fprintf(fp,
             "OPTIONS:\n"
             "    -b bitrate      set the bitrate, default 128 kbps\n"
-            "    -h              higher quality, but a little slower.  Recommended.\n"
+            "    -h              higher quality, but a little slower.\n"
             "    -f              fast mode (lower quality)\n"
             "    -V n            quality setting for VBR.  default n=%i\n"
-            "                    0=high quality,bigger files. 9=smaller files\n",
+            "                    0=high quality,bigger files. 9.999=smaller files\n",
             lame_get_VBR_q(gfp));
     fprintf(fp,
             "    --preset type   type must be \"medium\", \"standard\", \"extreme\", \"insane\",\n"
@@ -579,14 +583,17 @@ help_id3tag(FILE * const fp)
             "    --ta <artist>   audio/song artist (max 30 chars for version 1 tag)\n"
             "    --tl <album>    audio/song album (max 30 chars for version 1 tag)\n"
             "    --ty <year>     audio/song year of issue (1 to 9999)\n"
-            "    --tc <comment>  user-defined text (max 30 chars for v1 tag, 28 for v1.1)\n"
+            "    --tc <comment>  user-defined text (max 30 chars for v1 tag, 28 for v1.1)\n");
+    fprintf(fp,
             "    --tn <track[/total]>   audio/song track number and (optionally) the total\n"
             "                           number of tracks on the original recording. (track\n"
             "                           and total each 1 to 255. just the track number\n"
-            "                           creates v1.1 tag, providing a total forces v2.0).\n"
+            "                           creates v1.1 tag, providing a total forces v2.0).\n");
+    fprintf(fp,
             "    --tg <genre>    audio/song genre (name or number in list)\n"
             "    --ti <file>     audio/song albumArt (jpeg/png/gif file, v2.3 tag)\n"
             "    --tv <id=value> user-defined frame specified by id and value (v2.3 tag)\n"
+            "                    syntax: --tv \"TXXX=description=content\"\n"
             );
     fprintf(fp,
             "    --add-id3v2     force addition of version 2 tag\n"
@@ -650,7 +657,8 @@ help_developer_switches(FILE * const fp)
             "    --ns-sfb21 x    change ns-treble by x dB for sfb21\n"
             "    --shortthreshold x,y  short block switching threshold,\n"
             "                          x for L/R/M channel, y for S channel\n"
-            "    -Z [n]          always do calculate short block maskings\n"
+            "    -Z [n]          always do calculate short block maskings\n");
+    fprintf(fp,
             "  Noise Shaping related:\n"
             "(1) --substep n     use pseudo substep noise shaping method types 0-2\n"
             "(1) -X n[,m]        selects between different noise measurements\n"
@@ -675,12 +683,18 @@ long_help(const lame_global_flags * gfp, FILE * const fp, const char *ProgramNam
             "    --scale <arg>   scale input (multiply PCM data) by <arg>\n"
             "    --scale-l <arg> scale channel 0 (left) input (multiply PCM data) by <arg>\n"
             "    --scale-r <arg> scale channel 1 (right) input (multiply PCM data) by <arg>\n"
+            "    --swap-channel  swap L/R channels\n"
+            "    --ignorelength  ignore file length in WAV header\n"
             "    --gain <arg>    apply Gain adjustment in decibels, range -20.0 to +12.0\n"
+           );
 #if (defined HAVE_MPGLIB || defined AMIGA_MPEGA)
+    fprintf(fp,
             "    --mp1input      input file is a MPEG Layer I   file\n"
             "    --mp2input      input file is a MPEG Layer II  file\n"
             "    --mp3input      input file is a MPEG Layer III file\n"
+           );
 #endif
+    fprintf(fp,
             "    --nogap <file1> <file2> <...>\n"
             "                    gapless encoding for a set of contiguous files\n"
             "    --nogapout <dir>\n"
@@ -692,24 +706,26 @@ long_help(const lame_global_flags * gfp, FILE * const fp, const char *ProgramNam
             "\n"
             "  Input options for RAW PCM:\n"
             "    -r              input is raw pcm\n"
-            "    -x              force byte-swapping of input\n"
             "    -s sfreq        sampling frequency of input file (kHz) - default 44.1 kHz\n"
-            "    --bitwidth w    input bit width is w (default 16)\n"
             "    --signed        input is signed (default)\n"
             "    --unsigned      input is unsigned\n"
+            "    --bitwidth w    input bit width is w (default 16)\n"
+            "    -x              force byte-swapping of input\n"
             "    --little-endian input is little-endian (default)\n"
             "    --big-endian    input is big-endian\n"
+            "    -a              downmix from stereo to mono file for mono encoding\n"
            );
 
     wait_for(fp, lessmode);
     fprintf(fp,
             "  Operational options:\n"
-            "    -a              downmix from stereo to mono file for mono encoding\n"
             "    -m <mode>       (j)oint, (s)imple, (f)orce, (d)ual-mono, (m)ono (l)eft (r)ight\n"
-            "                    default is (j) or (s) depending on bitrate\n"
-            "                    joint  = joins the best possible of MS and LR stereo\n"
+            "                    default is (j)\n"
+            "                    joint  = Uses the best possible of MS and LR stereo\n"
             "                    simple = force LR stereo on all frames\n"
             "                    force  = force MS stereo on all frames.\n"
+	   );
+    fprintf(fp,
             "    --preset type   type must be \"medium\", \"standard\", \"extreme\", \"insane\",\n"
             "                    or a value for an average desired bitrate and depending\n"
             "                    on the value specified, appropriate quality settings will\n"
@@ -730,7 +746,6 @@ long_help(const lame_global_flags * gfp, FILE * const fp, const char *ProgramNam
             "    --flush         flush output stream as soon as possible\n"
             "    --freeformat    produce a free format bitstream\n"
             "    --decode        input=mp3 file, output=wav\n"
-            "    --swap-channel  swap L/R channels\n"
             "    -t              disable writing wav header when using --decode\n");
 
     wait_for(fp, lessmode);
@@ -745,10 +760,10 @@ long_help(const lame_global_flags * gfp, FILE * const fp, const char *ProgramNam
             "    --verbose       print a lot of useful information\n" "\n");
     fprintf(fp,
             "  Noise shaping & psycho acoustic algorithms:\n"
-            "    -q <arg>        <arg> = 0...9.  Default  -q 5 \n"
+            "    -q <arg>        <arg> = 0...9.  Default  -q 3 \n"
             "                    -q 0:  Highest quality, very slow \n"
             "                    -q 9:  Poor quality, but fast \n"
-            "    -h              Same as -q 2.   Recommended.\n"
+            "    -h              Same as -q 2.   \n"
             "    -f              Same as -q 7.   Fast, ok quality\n");
 
     wait_for(fp, lessmode);
@@ -767,6 +782,7 @@ long_help(const lame_global_flags * gfp, FILE * const fp, const char *ProgramNam
             "    --vbr-old       use old variable bitrate (VBR) routine\n"
             "    --vbr-new       use new variable bitrate (VBR) routine (default)\n"
             "    -Y              lets LAME ignore noise in sfb21, like in CBR\n"
+			"                    (Default for V3 to V9.999)\n"
             ,
             lame_get_VBR_q(gfp));
     fprintf(fp,
@@ -907,45 +923,32 @@ presets_longinfo_dm(FILE * msgfp)
             "To activate these presets:\n"
             "\n" "   For VBR modes (generally highest quality):\n" "\n");
     fprintf(msgfp,
-            "     \"--preset medium\" This preset should provide near transparency\n"
-            "                             to most people on most music.\n"
+            "     --preset medium      This preset should provide near transparency to most\n"
+            "                          people on most music.\n"
             "\n"
-            "     \"--preset standard\" This preset should generally be transparent\n"
-            "                             to most people on most music and is already\n"
-            "                             quite high in quality.\n" "\n");
+            "     --preset standard    This preset should generally be transparent to most\n"
+            "                          people on most music and is already quite high\n"
+            "                          in quality.\n" "\n");
     fprintf(msgfp,
-            "     \"--preset extreme\" If you have extremely good hearing and similar\n"
-            "                             equipment, this preset will generally provide\n"
-            "                             slightly higher quality than the \"standard\"\n"
-            "                             mode.\n" "\n");
+            "     --preset extreme     If you have extremely good hearing and similar\n"
+            "                          equipment, this preset will generally provide\n"
+            "                          slightly higher quality than the \"standard\" mode.\n" "\n");
     fprintf(msgfp,
             "   For CBR 320kbps (highest quality possible from the --preset switches):\n"
             "\n"
-            "     \"--preset insane\"  This preset will usually be overkill for most\n"
-            "                             people and most situations, but if you must\n"
-            "                             have the absolute highest quality with no\n"
-            "                             regard to filesize, this is the way to go.\n" "\n");
+            "     --preset insane      This preset will usually be overkill for most people\n"
+            "                          and most situations, but if you must have the\n"
+            "                          absolute highest quality with no regard to filesize,\n"
+            "                          this is the way to go.\n" "\n");
     fprintf(msgfp,
             "   For ABR modes (high quality per given bitrate but not as high as VBR):\n"
             "\n"
-            "     \"--preset <kbps>\"  Using this preset will usually give you good\n"
-            "                             quality at a specified bitrate. Depending on the\n"
-            "                             bitrate entered, this preset will determine the\n");
-    fprintf(msgfp,
-            "                             optimal settings for that particular situation.\n"
-            "                             While this approach works, it is not nearly as\n"
-            "                             flexible as VBR, and usually will not attain the\n"
-            "                             same level of quality as VBR at higher bitrates.\n" "\n");
-    fprintf(msgfp,
-            "The following options are also available for the corresponding profiles:\n"
-            "\n"
-            "                 standard\n"
-            "                 extreme\n"
-            "                 insane\n"
-            "   <cbr> (ABR Mode) - The ABR Mode is implied. To use it,\n"
-            "                      simply specify a bitrate. For example:\n"
-            "                      \"--preset 185\" activates this\n"
-            "                      preset and uses 185 as an average kbps.\n" "\n");
+            "     --preset <kbps>      Using this preset will usually give you good quality\n"
+            "                          at a specified bitrate. Depending on the bitrate\n"
+            "                          entered, this preset will determine the optimal\n"
+            "                          settings for that particular situation. For example:\n"
+            "                          \"--preset 185\" activates this preset and uses 185\n"
+            "                          as an average kbps.\n" "\n");
     fprintf(msgfp,
             "   \"cbr\"  - If you use the ABR mode (read above) with a significant\n"
             "            bitrate such as 80, 96, 112, 128, 160, 192, 224, 256, 320,\n"
@@ -956,10 +959,10 @@ presets_longinfo_dm(FILE * msgfp)
     fprintf(msgfp,
             "    For example:\n"
             "\n"
-            "    \"--preset standard <input file> <output file>\"\n"
-            " or \"--preset cbr 192 <input file> <output file>\"\n"
-            " or \"--preset 172 <input file> <output file>\"\n"
-            " or \"--preset extreme <input file> <output file>\"\n" "\n" "\n");
+            "    --preset standard <input file> <output file>\n"
+            " or --preset cbr 192 <input file> <output file>\n"
+            " or --preset 172 <input file> <output file>\n"
+            " or --preset extreme <input file> <output file>\n" "\n" "\n");
     fprintf(msgfp,
             "A few aliases are also available for ABR mode:\n"
             "phone => 16kbps/mono        phon+/lw/mw-eu/sw => 24kbps/mono\n"
@@ -1861,7 +1864,7 @@ parse_args_(lame_global_flags * gfp, int argc, char **argv,
 
                 T_ELIF("lowpass")
                     argUsed = getDoubleValue(token, nextArg, &double_value);
-                    if (argUsed)
+                    if (argUsed) {
                         if (double_value < 0) {
                             lame_set_lowpassfreq(gfp, -1);
                         }
@@ -1873,6 +1876,7 @@ parse_args_(lame_global_flags * gfp, int argc, char **argv,
                             }
                             lame_set_lowpassfreq(gfp, (int) (double_value * (double_value < 50. ? 1.e3 : 1.e0) + 0.5));
                         }
+                    }
                 
                 T_ELIF("lowpass-width")
                     argUsed = getDoubleValue(token, nextArg, &double_value);
@@ -1888,7 +1892,7 @@ parse_args_(lame_global_flags * gfp, int argc, char **argv,
 
                 T_ELIF("highpass")
                     argUsed = getDoubleValue(token, nextArg, &double_value);
-                    if (argUsed)
+                    if (argUsed) {
                         if (double_value < 0.0) {
                             lame_set_highpassfreq(gfp, -1);
                         }
@@ -1900,7 +1904,8 @@ parse_args_(lame_global_flags * gfp, int argc, char **argv,
                             }
                             lame_set_highpassfreq(gfp, (int) (double_value * (double_value < 16. ? 1.e3 : 1.e0) + 0.5));
                         }
-                
+                    }
+                    
                 T_ELIF("highpass-width")
                     argUsed = getDoubleValue(token, nextArg, &double_value);
                     if (argUsed) {
@@ -1915,7 +1920,7 @@ parse_args_(lame_global_flags * gfp, int argc, char **argv,
 
                 T_ELIF("comp")
                     argUsed = getDoubleValue(token, nextArg, &double_value);
-                    if (argUsed)
+                    if (argUsed) {
                         if (double_value < 1.0) {
                             error_printf("Must specify compression ratio >= 1.0\n");
                             return -1;
@@ -1923,7 +1928,8 @@ parse_args_(lame_global_flags * gfp, int argc, char **argv,
                         else {
                             lame_set_compression_ratio(gfp, (float) double_value);
                         }
-
+                    }
+    
                 /* some more GNU-ish options could be added
                  * brief         => few messages on screen (name, status report)
                  * o/output file => specifies output filename
@@ -2016,6 +2022,9 @@ parse_args_(lame_global_flags * gfp, int argc, char **argv,
 
                 T_ELIF("swap-channel")
                     global_reader.swap_channel = 1;
+
+                T_ELIF("ignorelength")
+                    global_reader.ignorewavlength = 1;
 
                 T_ELIF ("athaa-sensitivity")
                     argUsed = getDoubleValue(token, nextArg, &double_value);
@@ -2234,7 +2243,7 @@ parse_args_(lame_global_flags * gfp, int argc, char **argv,
                             (void) lame_set_mode(gfp, JOINT_STEREO);
                             break;
                         default:
-                            error_printf("%s: -m mode must be s/d/j/f/m not %s\n", ProgramName,
+                            error_printf("%s: -m mode must be s/d/f/j/m/l/r not %s\n", ProgramName,
                                          arg);
                             return -1;
                         }
