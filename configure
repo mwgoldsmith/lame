@@ -15894,12 +15894,12 @@ if test "x$GCC" = "xyes"; then
 			-fbranch-count-reg -fforce-addr -fforce-mem"
 		;;
 	4.*)
-		OPTIMIZATION="-O3 -fomit-frame-pointer -ffast-math"
+		OPTIMIZATION="-O3 -fomit-frame-pointer -ffast-math -msse2"
 		OPTIMIZATION_FULL="-fbranch-count-reg -fforce-addr"
 		;;
 	*)
 		# default
-		OPTIMIZATION="-O3 ${OMIT_FRAME_POINTER} -ffast-math \
+		OPTIMIZATION="-O3 ${OMIT_FRAME_POINTER} -ffast-math -msse2 \
 			-funroll-loops"
 		OPTIMIZATION_FULL="-fbranch-count-reg -fforce-addr"
 		;;
