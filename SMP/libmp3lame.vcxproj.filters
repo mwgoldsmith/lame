@@ -223,13 +223,13 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\include\lame.def">
-      <Filter>Resource Files</Filter>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <ResourceCompile Include="..\libmp3lame\lame.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="libmp3lame.def">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
