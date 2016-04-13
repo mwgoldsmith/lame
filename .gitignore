@@ -32,3 +32,8 @@ output
 *.la
 .deps
 .libs
+
+*.opendb
+*.VC.db
+.vs/
+
