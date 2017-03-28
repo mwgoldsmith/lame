@@ -125,57 +125,49 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <TargetName>lib$(ProjectName)d</TargetName>
-    <OutDir Condition="'$(ConfigurationType)'=='StaticLibrary'">$(ProjectDir)..\..\..\build\msvc\lib\$(PlatformTarget)\</OutDir>
-    <OutDir Condition="'$(ConfigurationType)'=='DynamicLibrary'">$(ProjectDir)..\..\..\..\build\msvc\bin\$(PlatformTarget)\</OutDir>
+    <OutDir>$(ProjectDir)..\..\..\build\msvc\lib\$(PlatformTarget)\</OutDir>
     <IntDir>$(OutDir)..\..\obj\$(PlatformTarget)\$(Configuration)\$(ConfigurationType)\$(ProjectName)\</IntDir>
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <TargetName>lib$(ProjectName)d</TargetName>
-    <OutDir Condition="'$(ConfigurationType)'=='StaticLibrary'">$(ProjectDir)..\..\..\build\msvc\lib\$(PlatformTarget)\</OutDir>
-    <OutDir Condition="'$(ConfigurationType)'=='DynamicLibrary'">$(ProjectDir)..\..\..\..\build\msvc\bin\$(PlatformTarget)\</OutDir>
+    <OutDir>$(ProjectDir)..\..\..\build\msvc\lib\$(PlatformTarget)\</OutDir>
     <IntDir>$(OutDir)..\..\obj\$(PlatformTarget)\$(Configuration)\$(ConfigurationType)\$(ProjectName)\</IntDir>
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <TargetName>lib$(ProjectName)</TargetName>
-    <OutDir Condition="'$(ConfigurationType)'=='StaticLibrary'">$(ProjectDir)..\..\..\build\msvc\lib\$(PlatformTarget)\</OutDir>
-    <OutDir Condition="'$(ConfigurationType)'=='DynamicLibrary'">$(ProjectDir)..\..\..\..\build\msvc\bin\$(PlatformTarget)\</OutDir>
+    <OutDir>$(ProjectDir)..\..\..\build\msvc\lib\$(PlatformTarget)\</OutDir>
     <IntDir>$(OutDir)..\..\obj\$(PlatformTarget)\$(Configuration)\$(ConfigurationType)\$(ProjectName)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <TargetName>lib$(ProjectName)</TargetName>
-    <OutDir Condition="'$(ConfigurationType)'=='StaticLibrary'">$(ProjectDir)..\..\..\build\msvc\lib\$(PlatformTarget)\</OutDir>
-    <OutDir Condition="'$(ConfigurationType)'=='DynamicLibrary'">$(ProjectDir)..\..\..\..\build\msvc\bin\$(PlatformTarget)\</OutDir>
+    <OutDir>$(ProjectDir)..\..\..\build\msvc\lib\$(PlatformTarget)\</OutDir>
     <IntDir>$(OutDir)..\..\obj\$(PlatformTarget)\$(Configuration)\$(ConfigurationType)\$(ProjectName)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">
     <TargetName>$(ProjectName)d</TargetName>
-    <OutDir Condition="'$(ConfigurationType)'=='StaticLibrary'">$(ProjectDir)..\..\..\..\build\msvc\lib\$(PlatformTarget)\</OutDir>
-    <OutDir Condition="'$(ConfigurationType)'=='DynamicLibrary'">$(ProjectDir)..\..\..\build\msvc\bin\$(PlatformTarget)\</OutDir>
+    <OutDir>$(ProjectDir)..\..\..\build\msvc\bin\$(PlatformTarget)\</OutDir>
     <IntDir>$(OutDir)..\..\obj\$(PlatformTarget)\$(Configuration)\$(ConfigurationType)\$(ProjectName)\</IntDir>
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">
     <TargetName>$(ProjectName)d</TargetName>
-    <OutDir Condition="'$(ConfigurationType)'=='StaticLibrary'">$(ProjectDir)..\..\..\..\build\msvc\lib\$(PlatformTarget)\</OutDir>
-    <OutDir Condition="'$(ConfigurationType)'=='DynamicLibrary'">$(ProjectDir)..\..\..\build\msvc\bin\$(PlatformTarget)\</OutDir>
+    <OutDir>$(ProjectDir)..\..\..\build\msvc\bin\$(PlatformTarget)\</OutDir>
     <IntDir>$(OutDir)..\..\obj\$(PlatformTarget)\$(Configuration)\$(ConfigurationType)\$(ProjectName)\</IntDir>
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">
     <TargetName>$(ProjectName)</TargetName>
-    <OutDir Condition="'$(ConfigurationType)'=='StaticLibrary'">$(ProjectDir)..\..\..\..\build\msvc\lib\$(PlatformTarget)\</OutDir>
-    <OutDir Condition="'$(ConfigurationType)'=='DynamicLibrary'">$(ProjectDir)..\..\..\build\msvc\bin\$(PlatformTarget)\</OutDir>
+    <OutDir>$(ProjectDir)..\..\..\build\msvc\bin\$(PlatformTarget)\</OutDir>
     <IntDir>$(OutDir)..\..\obj\$(PlatformTarget)\$(Configuration)\$(ConfigurationType)\$(ProjectName)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">
     <TargetName>$(ProjectName)</TargetName>
-    <OutDir Condition="'$(ConfigurationType)'=='StaticLibrary'">$(ProjectDir)..\..\..\..\build\msvc\lib\$(PlatformTarget)\</OutDir>
-    <OutDir Condition="'$(ConfigurationType)'=='DynamicLibrary'">$(ProjectDir)..\..\..\build\msvc\bin\$(PlatformTarget)\</OutDir>
+    <OutDir>$(ProjectDir)..\..\..\build\msvc\bin\$(PlatformTarget)\</OutDir>
     <IntDir>$(OutDir)..\..\obj\$(PlatformTarget)\$(Configuration)\$(ConfigurationType)\$(ProjectName)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
@@ -196,8 +188,10 @@
       <MultiProcessorCompilation>false</MultiProcessorCompilation>
       <MinimalRebuild>true</MinimalRebuild>
       <FunctionLevelLinking>true</FunctionLevelLinking>
-      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
       <FloatingPointModel>Precise</FloatingPointModel>
+      <StringPooling>false</StringPooling>
+      <FloatingPointExceptions>false</FloatingPointExceptions>
     </ClCompile>
     <Lib>
       <TargetMachine>MachineX86</TargetMachine>
@@ -207,8 +201,7 @@
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
     <PreBuildEvent>
-      <Command>
-ECHO ON
+      <Command>ECHO OFF
 SETLOCAL EnableDelayedExpansion EnableExtensions
 
 IF EXIST "$(OutDir)..\..\licenses\$(ProjectName).txt" (
@@ -219,11 +212,10 @@ IF EXIST "$(OutDir)..\..\include\lame" (
   RD /s /q "$(OutDir)..\..\include\lame"
 )
 
-ENDLOCAL
-</Command>
+ENDLOCAL</Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>ECHO Off
+      <Command>ECHO OFF
 SETLOCAL EnableDelayedExpansion EnableExtensions
 
 MKDIR "$(OutDir)..\..\include"
@@ -239,9 +231,6 @@ COPY "$(ProjectDir)..\..\LICENSE" "$(OutDir)..\..\licenses\$(ProjectName).txt"
 
 ENDLOCAL</Command>
     </PostBuildEvent>
-    <Bscmake>
-      <PreserveSbr>true</PreserveSbr>
-    </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -271,8 +260,7 @@ ENDLOCAL</Command>
       <TargetMachine>MachineX64</TargetMachine>
     </Lib>
     <PreBuildEvent>
-      <Command>
-ECHO ON
+      <Command>ECHO OFF
 SETLOCAL EnableDelayedExpansion EnableExtensions
 
 IF EXIST "$(OutDir)..\..\licenses\$(ProjectName).txt" (
@@ -283,11 +271,10 @@ IF EXIST "$(OutDir)..\..\include\lame" (
   RD /s /q "$(OutDir)..\..\include\lame"
 )
 
-ENDLOCAL
-</Command>
+ENDLOCAL</Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>ECHO Off
+      <Command>ECHO OFF
 SETLOCAL EnableDelayedExpansion EnableExtensions
 
 MKDIR "$(OutDir)..\..\include"
@@ -303,9 +290,6 @@ COPY "$(ProjectDir)..\..\LICENSE" "$(OutDir)..\..\licenses\$(ProjectName).txt"
 
 ENDLOCAL</Command>
     </PostBuildEvent>
-    <Bscmake>
-      <PreserveSbr>true</PreserveSbr>
-    </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -328,6 +312,7 @@ ENDLOCAL</Command>
       <StringPooling>true</StringPooling>
       <FloatingPointModel>Precise</FloatingPointModel>
       <FloatingPointExceptions>false</FloatingPointExceptions>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
     </ClCompile>
     <Lib>
       <TargetMachine>MachineX86</TargetMachine>
@@ -337,8 +322,7 @@ ENDLOCAL</Command>
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
     <PreBuildEvent>
-      <Command>
-ECHO ON
+      <Command>ECHO OFF
 SETLOCAL EnableDelayedExpansion EnableExtensions
 
 IF EXIST "$(OutDir)..\..\licenses\$(ProjectName).txt" (
@@ -349,11 +333,10 @@ IF EXIST "$(OutDir)..\..\include\lame" (
   RD /s /q "$(OutDir)..\..\include\lame"
 )
 
-ENDLOCAL
-</Command>
+ENDLOCAL</Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>ECHO Off
+      <Command>ECHO OFF
 SETLOCAL EnableDelayedExpansion EnableExtensions
 
 MKDIR "$(OutDir)..\..\include"
@@ -369,9 +352,6 @@ COPY "$(ProjectDir)..\..\LICENSE" "$(OutDir)..\..\licenses\$(ProjectName).txt"
 
 ENDLOCAL</Command>
     </PostBuildEvent>
-    <Bscmake>
-      <PreserveSbr>true</PreserveSbr>
-    </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -403,8 +383,7 @@ ENDLOCAL</Command>
       <TargetMachine>MachineX64</TargetMachine>
     </Lib>
     <PreBuildEvent>
-      <Command>
-ECHO ON
+      <Command>ECHO OFF
 SETLOCAL EnableDelayedExpansion EnableExtensions
 
 IF EXIST "$(OutDir)..\..\licenses\$(ProjectName).txt" (
@@ -415,11 +394,10 @@ IF EXIST "$(OutDir)..\..\include\lame" (
   RD /s /q "$(OutDir)..\..\include\lame"
 )
 
-ENDLOCAL
-</Command>
+ENDLOCAL</Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>ECHO Off
+      <Command>ECHO OFF
 SETLOCAL EnableDelayedExpansion EnableExtensions
 
 MKDIR "$(OutDir)..\..\include"
@@ -435,9 +413,6 @@ COPY "$(ProjectDir)..\..\LICENSE" "$(OutDir)..\..\licenses\$(ProjectName).txt"
 
 ENDLOCAL</Command>
     </PostBuildEvent>
-    <Bscmake>
-      <PreserveSbr>true</PreserveSbr>
-    </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">
     <ClCompile>
@@ -458,6 +433,7 @@ ENDLOCAL</Command>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <BufferSecurityCheck>true</BufferSecurityCheck>
       <FloatingPointModel>Precise</FloatingPointModel>
+      <FloatingPointExceptions>false</FloatingPointExceptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -472,8 +448,7 @@ ENDLOCAL</Command>
       <ModuleDefinitionFile>mp3lame.def</ModuleDefinitionFile>
     </Link>
     <PreBuildEvent>
-      <Command>
-ECHO ON
+      <Command>ECHO OFF
 SETLOCAL EnableDelayedExpansion EnableExtensions
 
 IF EXIST "$(OutDir)..\..\licenses\$(ProjectName).txt" (
@@ -484,11 +459,10 @@ IF EXIST "$(OutDir)..\..\include\lame" (
   RD /s /q "$(OutDir)..\..\include\lame"
 )
 
-ENDLOCAL
-</Command>
+ENDLOCAL</Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>ECHO Off
+      <Command>ECHO OFF
 SETLOCAL EnableDelayedExpansion EnableExtensions
 
 MKDIR "$(OutDir)..\..\include"
@@ -504,9 +478,6 @@ COPY "$(ProjectDir)..\..\LICENSE" "$(OutDir)..\..\licenses\$(ProjectName).txt"
 
 ENDLOCAL</Command>
     </PostBuildEvent>
-    <Bscmake>
-      <PreserveSbr>true</PreserveSbr>
-    </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">
     <ClCompile>
@@ -527,21 +498,21 @@ ENDLOCAL</Command>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <BufferSecurityCheck>true</BufferSecurityCheck>
       <FloatingPointModel>Precise</FloatingPointModel>
+      <FloatingPointExceptions>false</FloatingPointExceptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
-      <GenerateDebugInformation>DebugFastLink</GenerateDebugInformation>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <ImportLibrary>$(OutDir)..\..\lib\$(PlatformTarget)\$(TargetName).lib</ImportLibrary>
       <ProfileGuidedDatabase>$(IntDir)$(TargetName).pgd</ProfileGuidedDatabase>
-      <ProgramDatabaseFile>$(OutDir)..\..\lib\$(PlatformTarget)\$(TargetName).pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(OutDir)$(TargetName).pdb</ProgramDatabaseFile>
       <AdditionalLibraryDirectories>$(OutDir)..\..\lib\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
       <ModuleDefinitionFile>mp3lame.def</ModuleDefinitionFile>
     </Link>
     <PreBuildEvent>
-      <Command>
-ECHO ON
+      <Command>ECHO OFF
 SETLOCAL EnableDelayedExpansion EnableExtensions
 
 IF EXIST "$(OutDir)..\..\licenses\$(ProjectName).txt" (
@@ -552,11 +523,10 @@ IF EXIST "$(OutDir)..\..\include\lame" (
   RD /s /q "$(OutDir)..\..\include\lame"
 )
 
-ENDLOCAL
-</Command>
+ENDLOCAL</Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>ECHO Off
+      <Command>ECHO OFF
 SETLOCAL EnableDelayedExpansion EnableExtensions
 
 MKDIR "$(OutDir)..\..\include"
@@ -572,9 +542,6 @@ COPY "$(ProjectDir)..\..\LICENSE" "$(OutDir)..\..\licenses\$(ProjectName).txt"
 
 ENDLOCAL</Command>
     </PostBuildEvent>
-    <Bscmake>
-      <PreserveSbr>true</PreserveSbr>
-    </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">
     <ClCompile>
@@ -604,7 +571,7 @@ ENDLOCAL</Command>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <ImportLibrary>$(OutDir)..\..\lib\$(PlatformTarget)\$(TargetName).lib</ImportLibrary>
       <ProfileGuidedDatabase>$(IntDir)$(TargetName).pgd</ProfileGuidedDatabase>
-      <ProgramDatabaseFile>$(OutDir)..\..\lib\$(PlatformTarget)\$(TargetName).pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(OutDir)$(TargetName).pdb</ProgramDatabaseFile>
       <AdditionalLibraryDirectories>$(OutDir)..\..\lib\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
       <LargeAddressAware>true</LargeAddressAware>
@@ -613,8 +580,7 @@ ENDLOCAL</Command>
       <ModuleDefinitionFile>mp3lame.def</ModuleDefinitionFile>
     </Link>
     <PreBuildEvent>
-      <Command>
-ECHO ON
+      <Command>ECHO OFF
 SETLOCAL EnableDelayedExpansion EnableExtensions
 
 IF EXIST "$(OutDir)..\..\licenses\$(ProjectName).txt" (
@@ -625,11 +591,10 @@ IF EXIST "$(OutDir)..\..\include\lame" (
   RD /s /q "$(OutDir)..\..\include\lame"
 )
 
-ENDLOCAL
-</Command>
+ENDLOCAL</Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>ECHO Off
+      <Command>ECHO OFF
 SETLOCAL EnableDelayedExpansion EnableExtensions
 
 MKDIR "$(OutDir)..\..\include"
@@ -645,9 +610,6 @@ COPY "$(ProjectDir)..\..\LICENSE" "$(OutDir)..\..\licenses\$(ProjectName).txt"
 
 ENDLOCAL</Command>
     </PostBuildEvent>
-    <Bscmake>
-      <PreserveSbr>true</PreserveSbr>
-    </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">
     <ClCompile>
@@ -677,7 +639,7 @@ ENDLOCAL</Command>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <ImportLibrary>$(OutDir)..\..\lib\$(PlatformTarget)\$(TargetName).lib</ImportLibrary>
       <ProfileGuidedDatabase>$(IntDir)$(TargetName).pgd</ProfileGuidedDatabase>
-      <ProgramDatabaseFile>$(OutDir)..\..\lib\$(PlatformTarget)\$(TargetName).pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(OutDir)$(TargetName).pdb</ProgramDatabaseFile>
       <AdditionalLibraryDirectories>$(OutDir)..\..\lib\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -685,8 +647,7 @@ ENDLOCAL</Command>
       <ModuleDefinitionFile>mp3lame.def</ModuleDefinitionFile>
     </Link>
     <PreBuildEvent>
-      <Command>
-ECHO ON
+      <Command>ECHO OFF
 SETLOCAL EnableDelayedExpansion EnableExtensions
 
 IF EXIST "$(OutDir)..\..\licenses\$(ProjectName).txt" (
@@ -697,11 +658,10 @@ IF EXIST "$(OutDir)..\..\include\lame" (
   RD /s /q "$(OutDir)..\..\include\lame"
 )
 
-ENDLOCAL
-</Command>
+ENDLOCAL</Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>ECHO Off
+      <Command>ECHO OFF
 SETLOCAL EnableDelayedExpansion EnableExtensions
 
 MKDIR "$(OutDir)..\..\include"
@@ -717,9 +677,6 @@ COPY "$(ProjectDir)..\..\LICENSE" "$(OutDir)..\..\licenses\$(ProjectName).txt"
 
 ENDLOCAL</Command>
     </PostBuildEvent>
-    <Bscmake>
-      <PreserveSbr>true</PreserveSbr>
-    </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\libmp3lame\bitstream.c" />
