@@ -32,7 +32,9 @@ output
 .deps
 .libs
 
-*.opendb
-*.VC.db
 .vs/
+*.VC.db
+*.opendb
+*.sdf
+*.vcxproj.user
 
